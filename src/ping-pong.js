@@ -23,8 +23,25 @@ class Ball extends Rect {
 const canvas = document.getElementById('pong');
 const context = canvas.getContext('2d');
 
-context.fillStyle = '#000000';
-context.fillRect(0, 0, canvas.width, canvas.height);
+const ball = new Ball();
+ball.pos.x = 100;
+ball.pos.y = 50;
 
-context.fillStyle = '#FFFFFF';
-context.fillRect(0, 0, 10, 10);
+ball.vel.x = 100;
+ball.vel.y = 100;
+
+const callback = millis => {
+
+}
+
+const update = dt => {
+  ball.pos.x += ball.vel.x * dt;
+  ball.pos.y += ball.vel.y * dt;
+
+  context.fillStyle = '#000000';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  context.fillStyle = '#FFFFFF';
+  context.fillRect(ball.pos.x, ball.pos.y, ball.size.x, ball.size.y);
+}
+
